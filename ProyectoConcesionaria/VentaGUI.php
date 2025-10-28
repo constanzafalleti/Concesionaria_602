@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
         <select name="id_cargo" required>
             <option value="">Seleccione...</option>
             <?php
-            $cargoList = ($_SESSION['id_cargo'] < 3) ? $usuariomodel->ListarVendedor()
+            $cargoList = ($_SESSION['id_cargo'] < 3) ? $usuariomodel->ListarVendedor(): [];
             foreach ($cargoList as $r):
                 $selected = $usuario->getid_cargo() == $r->getid_cargo() ? 'selected' : '';
                 echo "<option value='{$r->getid_cargo()}' $selected>" . htmlspecialchars($r->getTipo()) . "</option>";
@@ -119,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
         <select name="id_cargo" required>
             <option value="">Seleccione...</option>
             <?php
-            $cargoList = ($_SESSION['id_cargo'] < 3) ? $usuariomodel->ListarNombre()
+            $cargoList = ($_SESSION['id_cargo'] < 3) ? $usuariomodel->ListarNombre(): [];
             foreach ($cargoList as $r):
                 $selected = $usuario->getid_cargo() == $r->getid_cargo() ? 'selected' : '';
                 echo "<option value='{$r->getid_cargo()}' $selected>" . htmlspecialchars($r->getTipo()) . "</option>";
