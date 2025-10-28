@@ -40,7 +40,7 @@ class ProductoModel {
         try {
             $result = [];
             $stm = $this->pdo->prepare("
-                SELECT p.id_automovil, p.nombre, p.marca, p.precio, p.descripcion, p.stock 
+                SELECT p.id_automovil, p.nombre 
                 FROM producto p 
             ");
             $stm->execute();
@@ -49,10 +49,7 @@ class ProductoModel {
                 $producto = new Producto();
                 $producto->setid_automovil($r->id_automovil);
                 $producto->setnombre($r->nombre);
-                $producto->setmarca($r->marca);
-                $producto->setprecio($r->precio);
-                $producto->setdescripcion($r->descripcion);
-                $producto->setstock($r->stock);
+                
                 $result[] = $producto;
             }
             return $result;

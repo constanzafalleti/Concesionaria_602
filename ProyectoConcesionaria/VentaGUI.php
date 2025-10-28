@@ -1,6 +1,12 @@
 <?php
 require_once 'Venta.php';
 require_once 'Venta.model.php';
+require_once 'Producto.php';
+require_once 'Producto.model.php';
+require_once 'Usuario.php';
+require_once 'Usuario.model.php';
+require_once 'Vendedores.php';
+require_once 'Vendedores.model.php';
 
 session_start();
 
@@ -12,6 +18,12 @@ if (!isset($_SESSION['idUsuario'])) {
 
 $venta = new Venta();
 $ventamodel = new VentaModel();
+$producto = new Producto();
+$producto = new ProductoModel();
+$usuario = new Usuario();
+$usuario = new UsuarioModel();
+$vendedores = new Vendedores();
+$vendedores = new VendedoresModel();
 
 // Manejo del formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
@@ -92,37 +104,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
         <input type="text" name="descripcion" required value="<?= htmlspecialchars($venta->getdescripcion() ?? ''); ?>"><br>
 
         <label>Automovil:</label>
-        <select name="id_cargo" required>
+        <select name="id_automovil" required>
             <option value="">Seleccione...</option>
             <?php
-            $cargoList = ($_SESSION['id_cargo'] < 3) ? $cargomodel->ListarTodos() : $cargomodel->ListarRestringidos();
+            $cargoList = $->ListarTodos();
             foreach ($cargoList as $r):
-                $selected = $usuario->getid_cargo() == $r->getid_cargo() ? 'selected' : '';
-                echo "<option value='{$r->getid_cargo()}' $selected>" . htmlspecialchars($r->getTipo()) . "</option>";
+                $selected = $usuario->getid_automovil() == $r->getid_automovil() ? 'selected' : '';
+                echo "<option value='{$r->getid_automovil()}' $selected>" . htmlspecialchars($r->getnombre()) . "</option>";
             endforeach;
             ?>
         </select><br><br>
 
         <label>Vendedor: </label>
-        <select name="id_cargo" required>
+        <select name="id_vendedor" required>
             <option value="">Seleccione...</option>
             <?php
-            $cargoList = ($_SESSION['id_cargo'] < 3) ? $usuariomodel->ListarVendedor(): [];
+            $cargoList = ($_SESSION['id_vendedor'] < 3) ? $usuariomodel->ListarVendedor(): [];
             foreach ($cargoList as $r):
-                $selected = $usuario->getid_cargo() == $r->getid_cargo() ? 'selected' : '';
-                echo "<option value='{$r->getid_cargo()}' $selected>" . htmlspecialchars($r->getTipo()) . "</option>";
+                $selected = $usuario->getid_vendedor() == $r->getid_vendedor() ? 'selected' : '';
+                echo "<option value='{$r->getid_vendedor()}' $selected>" . htmlspecialchars($r->getTipo()) . "</option>";
             endforeach;
             ?>
         </select><br><br>
 
         <label>Cliente:</label>
-        <select name="id_cargo" required>
+        <select name="idUsuario" required>
             <option value="">Seleccione...</option>
             <?php
-            $cargoList = ($_SESSION['id_cargo'] < 3) ? $usuariomodel->ListarNombre(): [];
+            $cargoList = ($_SESSION['idUsuario'] < 3) ? $usuariomodel->ListarNombre(): [];
             foreach ($cargoList as $r):
-                $selected = $usuario->getid_cargo() == $r->getid_cargo() ? 'selected' : '';
-                echo "<option value='{$r->getid_cargo()}' $selected>" . htmlspecialchars($r->getTipo()) . "</option>";
+                $selected = $usuario->getid_usuario() == $r->getid_usuario() ? 'selected' : '';
+                echo "<option value='{$r->getid_usuario()}' $selected>" . htmlspecialchars($r->getTipo()) . "</option>";
             endforeach;
             ?>
         </select><br><br>
