@@ -7,13 +7,46 @@ class Venta {
     private $descripcion;
     private $id_automovil;
     private $id_usuario;
+    private $id_vendedores;
+    private $nombre;
+    private $nombrevendedor;
+    private $apellido;
 
     // GET Y SET
-    public function getid_ventas() {
+    public function getapellido() {
+        return $this->apellido;
+    }
+    public function setapellido($apellido) {
+        $this->apellido= $apellido;
+    }
+    
+
+    public function getnombrevendedor() {
+        return $this->nombrevendedor;
+    }
+    public function setnombrevendedor($nombrevendedor) {
+        $this->nombrevendedor= $nombrevendedor;
+    }
+
+    public function getnombre() {
+        return $this->nombre;
+    }
+    public function setnombre($nombre) {
+        $this->nombre= $nombre;
+    }
+    
+       public function getid_ventas() {
         return $this->id_ventas;
     }
     public function setid_ventas($id_ventas) {
         $this->id_ventas= $id_ventas;
+    }
+
+        public function getid_vendedores() {
+        return $this->id_vendedores;
+    }
+    public function setid_vendedores($id_vendedores) {
+        $this->id_vendedores= $id_vendedores;
     }
 
     public function getfechahora() {

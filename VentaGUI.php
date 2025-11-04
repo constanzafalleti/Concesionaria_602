@@ -19,11 +19,11 @@ if (!isset($_SESSION['idUsuario'])) {
 $venta = new Venta();
 $ventamodel = new VentaModel();
 $producto = new Producto();
-$producto = new ProductoModel();
+$productomodel = new ProductoModel();
 $usuario = new Usuario();
-$usuario = new UsuarioModel();
+$usuariomodel = new UsuarioModel();
 $vendedores = new Vendedores();
-$vendedores = new VendedoresModel();
+$vendedoresmodel = new VendedoresModel();
 
 // Manejo del formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
@@ -35,8 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
     $montototal  = trim($_POST['montototal'] ?? '');
     $mediopago   = trim($_POST['mediopago'] ?? '');
     $descripcion = trim($_POST['descripcion'] ?? '');
-    $id_automovil = filter_input(INPUT_POST, 'id_automovil', FILTER_VALIDATE_INT);
+    $id_automovil = filter_input(INPUT_POST, 'nombre', FILTER_VALIDATE_INT);
     $id_usuario   = filter_input(INPUT_POST, 'id_usuario', FILTER_VALIDATE_INT);
+    $id_vendedor   = filter_input(INPUT_POST, 'nombrevendedor', FILTER_VALIDATE_INT);
 
     switch ($operacion) {
         case 'actualizar':
@@ -47,7 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
             $venta->setdescripcion($descripcion);
             $venta->setid_automovil($id_automovil);
             $venta->setid_usuario($id_usuario);
+            $venta->setid_vendedor($id_vendedor);
             $ventamodel->Actualizar($venta);
+
             header('Location: VentaGUI.php');
             exit();
 
@@ -56,9 +59,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
             $venta->setmontototal($montototal);
             $venta->setmediopago($mediopago);
             $venta->setdescripcion($descripcion);
-            $venta->setid_automovil($id_automovil);
+            $venta->setid_automovil($nombre);
             $venta->setid_usuario($id_usuario);
+            $venta->setid_vendedor($id_vendedor);
+            $venta->setnombrevendedor($nombrevendedor);
             $ventamodel->Registrar($venta);
+
             header('Location: VentaGUI.php');
             exit();
 
@@ -107,9 +113,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
         <select name="id_automovil" required>
             <option value="">Seleccione...</option>
             <?php
-            $cargoList = $->ListarTodos();
-            foreach ($cargoList as $r):
-                $selected = $usuario->getid_automovil() == $r->getid_automovil() ? 'selected' : '';
+            $productoList = $productomodel->ListarAutomovil();
+            foreach ($productoList as $r):
+                $selected = $producto->getid_automovil() == $r->getid_automovil() ? 'selected' : '';
                 echo "<option value='{$r->getid_automovil()}' $selected>" . htmlspecialchars($r->getnombre()) . "</option>";
             endforeach;
             ?>
