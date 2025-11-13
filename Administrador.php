@@ -12,13 +12,17 @@ if (!isset($_SESSION['idUsuario']) || $_SESSION['id_cargo'] != 1) {
 <head>
     <meta charset="UTF-8">
     <title>Panel del Administrador</title>
-    <link rel="stylesheet" href="Css/Administrador.css">
+    <link rel="stylesheet" href="css/paneladmin.css">
 </head>
 <body>
     <div>
         <aside>
             <div>
-                <img src="Imagenes/avatar.jpg" alt="Avatar del usuario" class="avatar">
+                
+        <main>
+            <h1>Panel de Administración</h1>
+            <p>Este es el panel de control para administradores.</p>
+        </main>
                 <p> Bienvenido: </p><span><?= htmlspecialchars($_SESSION['Nombre']); ?></span>
                 
             </div>
@@ -34,10 +38,6 @@ if (!isset($_SESSION['idUsuario']) || $_SESSION['id_cargo'] != 1) {
             </nav>
         </aside>
 
-        <main>
-            <h1>Panel de Administración</h1>
-            <p>Este es el panel de control para administradores.</p>
-        </main>
     </div>
 </body>
 </html>

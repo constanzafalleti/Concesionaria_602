@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --rojo: #263959;
+    --gris: #669ad2;
+    --negro: #222222;
+    --blanco: #ffffff;
+}
+
+body {
+    background-color: var(--negro);
+    color: var(--blanco);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+
+/* === CONTENEDOR PRINCIPAL === */
+
+.container {
+    background-color: var(--gris);
+    padding: 40px 50px;
+    border-radius: 15px;
+    border: 2px solid var(--rojo);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    width: 90%;
+    max-width: 600px;
+}
+
+
+/* === TÍTULO === */
+
+h1 {
+    color: var(--rojo);
+    background-color: var(--blanco);
+    padding: 15px 25px;
+    border-radius: 10px;
+    display: inline-block;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+
+/* === BIENVENIDA === */
+
+.welcome {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+.welcome span {
+    color: var(--blanco);
+    font-weight: bold;
+}
+
+
+/* === MENÚ DE OPCIONES === */
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: var(--blanco);
+    background-color: var(--rojo);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    border: 1px solid transparent;
+    display: block;
+}
+
+ul li a:hover {
+    background-color: var(--negro);
+    border: 1px solid var(--blanco);
+}
+
+
+/* === MODO MÓVIL === */
+
+@media (max-width: 600px) {
+    .container {
+        padding: 25px;
+    }
+    h1 {
+        font-size: 1.6rem;
+        padding: 10px 20px;
+    }
+    ul li a {
+        font-size: 0.95rem;
+        padding: 10px;
+    }
+}

@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --rojo: #263959;
+    --gris: #669ad2;
+    --negro: #222222;
+    --blanco: #ffffff;
+}
+
+
+/* === ESTILO GENERAL === */
+
+body {
+    background-color: var(--negro);
+    color: var(--blanco);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+
+/* === CAJA DEL LOGIN === */
+
+div {
+    background-color: var(--gris);
+    padding: 40px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 400px;
+}
+
+
+/* === TÍTULO === */
+
+h1 {
+    background-color: var(--gris);
+    color: var(--rojo);
+    border: 2px solid var(--rojo);
+    border-radius: 10px;
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+
+/* === FORMULARIO === */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    text-align: left;
+    color: var(--blanco);
+}
+
+input {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 1rem;
+}
+
+button {
+    background-color: var(--rojo);
+    color: var(--blanco);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #1d2b43;
+}
+
+
+/* === ENLACE DE REGISTRO === */
+
+p {
+    margin-top: 20px;
+    color: #ddd;
+}
+
+p a {
+    color: var(--gris);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p a:hover {
+    color: var(--rojo);
+}
+
+
+/* === MODO MÓVIL === */
+
+@media (max-width: 600px) {
+    div {
+        padding: 25px;
+    }
+    h1 {
+        font-size: 1.6rem;
+    }
+    button {
+        font-size: 0.9rem;
+    }
+}
