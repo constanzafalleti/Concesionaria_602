@@ -7,7 +7,7 @@ class Venta {
     private $descripcion;
     private $id_automovil;
     private $id_usuario;
-    private $id_vendedores;
+    private $id_vendedor;
     private $nombre;
     private $nombrevendedor;
     private $apellido;
@@ -42,11 +42,11 @@ class Venta {
         $this->id_ventas= $id_ventas;
     }
 
-        public function getid_vendedores() {
-        return $this->id_vendedores;
+        public function getid_vendedor() {
+        return $this->id_vendedor;
     }
-    public function setid_vendedores($id_vendedores) {
-        $this->id_vendedores= $id_vendedores;
+    public function setid_vendedor($id_vendedor) {
+        $this->id_vendedor= $id_vendedor;
     }
 
     public function getfechahora() {

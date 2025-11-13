@@ -36,6 +36,24 @@ class VendedoresModel {
             die("Error al listar vendedor: " . $e->getMessage());
         }
     }
+    public function ListarVendedores(): array {
+        try {
+            $result = [];
+            $stm = $this->pdo->prepare("SELECT id_vendedor,nombre,apellido FROM vendedores ");
+            $stm->execute();
+
+            foreach ($stm->fetchAll(PDO::FETCH_OBJ) as $r) {
+                $vendedores = new Vendedores();
+                $vendedores->setid_vendedor($r->id_vendedor);
+                $vendedores->setnombre($r->nombre);
+                $vendedores->setapellido($r->apellido);
+                $result[] = $vendedores;
+            }
+            return $result;
+        } catch (Exception $e) {
+            die("Error al listar vendedor: " . $e->getMessage());
+        }
+    }
 
     // Obtener un usuario por su ID
     public function Obtener(int $id_vendedor): ?Vendedores {

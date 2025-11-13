@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
     $descripcion = trim($_POST['descripcion'] ?? '');
     $id_automovil = filter_input(INPUT_POST, 'nombre', FILTER_VALIDATE_INT);
     $id_usuario   = filter_input(INPUT_POST, 'id_usuario', FILTER_VALIDATE_INT);
-    $id_vendedor   = filter_input(INPUT_POST, 'nombrevendedor', FILTER_VALIDATE_INT);
+    $id_vendedor   = filter_input(INPUT_POST, 'id_vendedor', FILTER_VALIDATE_INT);
 
     switch ($operacion) {
         case 'actualizar':
@@ -125,10 +125,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
         <select name="id_vendedor" required>
             <option value="">Seleccione...</option>
             <?php
-            $cargoList = ($_SESSION['id_vendedor'] < 3) ? $usuariomodel->ListarVendedor(): [];
-            foreach ($cargoList as $r):
-                $selected = $usuario->getid_vendedor() == $r->getid_vendedor() ? 'selected' : '';
-                echo "<option value='{$r->getid_vendedor()}' $selected>" . htmlspecialchars($r->getTipo()) . "</option>";
+            $vendedoresList = $vendedoresmodel->ListarVendedores();
+            foreach ($vendedoresList as $r):
+                $selected = $vendedores->getid_vendedor() == $r->getid_vendedor() ? 'selected' : '';
+                echo "<option value='{$r->getid_vendedor()}' $selected>" . htmlspecialchars($r->getnombre()) . "</option>";
             endforeach;
             ?>
         </select><br><br>

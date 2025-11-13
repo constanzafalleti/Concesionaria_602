@@ -108,8 +108,8 @@ class VentaModel{
     public function Registrar(Venta $data): void {
         try {
             $sql = "
-                INSERT INTO ventas (fechahora, montototal, mediopago, descripcion, id_automovil, id_usuario) 
-                VALUES ( ?, ?, ?, ?, ?, ?)";
+                INSERT INTO ventas (fechahora, montototal, mediopago, descripcion, id_automovil, id_usuario, id_vendedor) 
+                VALUES ( ?, ?, ?, ?, ?, ?, ?)";
             $this->pdo->prepare($sql)->execute([
                 $data->getfechahora(),
                 $data->getmontototal(),
@@ -117,6 +117,7 @@ class VentaModel{
                 $data->getdescripcion(),
                 $data->getid_automovil(),
                 $data->getid_usuario(),
+                $data->getid_vendedor(),
 
             ]);
         } catch (Exception $e) {
