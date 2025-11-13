@@ -35,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
     $montototal  = trim($_POST['montototal'] ?? '');
     $mediopago   = trim($_POST['mediopago'] ?? '');
     $descripcion = trim($_POST['descripcion'] ?? '');
-    $id_automovil = filter_input(INPUT_POST, 'nombre', FILTER_VALIDATE_INT);
-    $id_usuario   = filter_input(INPUT_POST, 'id_usuario', FILTER_VALIDATE_INT);
+    $id_automovil = filter_input(INPUT_POST, 'id_automovil', FILTER_VALIDATE_INT);
+    $idUsuario   = filter_input(INPUT_POST, 'idUsuario', FILTER_VALIDATE_INT);
     $id_vendedor   = filter_input(INPUT_POST, 'id_vendedor', FILTER_VALIDATE_INT);
 
     switch ($operacion) {
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
             $venta->setmediopago($mediopago);
             $venta->setdescripcion($descripcion);
             $venta->setid_automovil($id_automovil);
-            $venta->setid_usuario($id_usuario);
+            $venta->setidUsuario($idUsuario);
             $venta->setid_vendedor($id_vendedor);
             $ventamodel->Actualizar($venta);
 
@@ -59,8 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
             $venta->setmontototal($montototal);
             $venta->setmediopago($mediopago);
             $venta->setdescripcion($descripcion);
-            $venta->setid_automovil($nombre);
-            $venta->setid_usuario($id_usuario);
+            $venta->setid_automovil($id_automovil);
+            $venta->setidUsuario($idUsuario);
             $venta->setid_vendedor($id_vendedor);
             $venta->setnombrevendedor($nombrevendedor);
             $ventamodel->Registrar($venta);
@@ -137,10 +137,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
         <select name="idUsuario" required>
             <option value="">Seleccione...</option>
             <?php
-            $cargoList = ($_SESSION['idUsuario'] < 3) ? $usuariomodel->ListarNombre(): [];
-            foreach ($cargoList as $r):
-                $selected = $usuario->getid_usuario() == $r->getid_usuario() ? 'selected' : '';
-                echo "<option value='{$r->getid_usuario()}' $selected>" . htmlspecialchars($r->getTipo()) . "</option>";
+            $clienteList = $usuariomodel->ListarClientes();
+            foreach ($clienteList as $r):
+                $selected = $venta->getidUsuario() == $r->getidUsuario() ? 'selected' : '';
+                echo "<option value='{$r->getidUsuario()}' $selected>" . htmlspecialchars($r->getNombre()) . "</option>";
             endforeach;
             ?>
         </select><br><br>
@@ -172,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
                 <td><?= htmlspecialchars($r->getmediopago()); ?></td>
                 <td><?= htmlspecialchars($r->getdescripcion()); ?></td>
                 <td><?= htmlspecialchars($r->getid_automovil()); ?></td>
-                <td><?= htmlspecialchars($r->getid_usuario()); ?></td>
+                <td><?= htmlspecialchars($r->getidUsuario()); ?></td>
                 <td>
                     <form method="post" style="display:inline;">
                         <input type="hidden" name="operacion" value="editar">

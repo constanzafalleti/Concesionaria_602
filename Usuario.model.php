@@ -66,14 +66,15 @@ class UsuarioModel {
         try {
             $result = [];
             $stm = $this->pdo->prepare("
-                SELECT Nombre, Apellido FROM usuarios WHERE id_cargo= 2
+                SELECT idUsuario, Nombre FROM usuarios WHERE id_cargo= 2
             ");
             $stm->execute();
 
             foreach ($stm->fetchAll(PDO::FETCH_OBJ) as $r) {
                 $usuario = new Usuario();
+                $usuario->setidUsuario($r->idUsuario);
                 $usuario->setNombre($r->Nombre);
-                $usuario->setApellido($r->Apellido);
+                
                 
                 $result[] = $usuario;
             }

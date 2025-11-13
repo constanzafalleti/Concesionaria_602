@@ -6,18 +6,18 @@ class Venta {
     private $mediopago;
     private $descripcion;
     private $id_automovil;
-    private $id_usuario;
+    private $idUsuario;
     private $id_vendedor;
     private $nombre;
     private $nombrevendedor;
     private $apellido;
 
     // GET Y SET
-    public function getapellido() {
-        return $this->apellido;
+    public function getApellido() {
+        return $this->Apellido;
     }
-    public function setapellido($apellido) {
-        $this->apellido= $apellido;
+    public function setApellido($Apellido) {
+        $this->Apellido = $Apellido;
     }
     
 
@@ -84,11 +84,11 @@ class Venta {
         $this->id_automovil = $id_automovil;
     }
 
-    public function getid_usuario() {
-        return $this->id_usuario;
+    public function getidUsuario() {
+        return $this->idUsuario;
     }
-    public function setid_usuario($id_usuario) {
-        $this->id_usuario = $id_usuario;
+    public function setidUsuario($idUsuario) {
+        $this->idUsuario = $idUsuario;
     }
 
    

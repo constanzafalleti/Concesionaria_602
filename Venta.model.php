@@ -20,10 +20,10 @@ class VentaModel{
         try {
             $result = [];
             $stm = $this->pdo->prepare("
-                SELECT v.id_ventas, v.fechahora, v.montototal, v.mediopago, v.descripcion, v.id_automovil, v.id_usuario 
+                SELECT v.id_ventas, v.fechahora, v.montototal, v.mediopago, v.descripcion, v.id_automovil, v.idUsuario 
                 FROM ventas v
                 INNER JOIN producto p ON v.id_automovil = p.id_automovil
-                INNER JOIN usuarios u ON v.id_usuario = u.id_usuario
+                INNER JOIN usuarios u ON v.idUsuario = u.idUsuario
                
             ");
             $stm->execute();
@@ -36,7 +36,7 @@ class VentaModel{
                 $venta->setmediopago($r->mediopago);
                 $venta->setdescripcion($r->descripcion);
                 $venta->setid_automovil($r->id_automovil);
-                $venta->setid_usuario($r->id_usuario);
+                $venta->setidUsuario($r->idUsuario);
 
                 $result[] = $venta;
             }
@@ -61,7 +61,7 @@ class VentaModel{
                 $venta->setmediopago($r->mediopago);
                 $venta->setdescripcion($r->descripcion);
                 $venta->setid_automovil($r->id_automovil);
-                $venta->setid_usuario($r->id_usuario);
+               $venta->setidUsuario($r->idUsuario);
 
                 return $venta;
             }
@@ -87,7 +87,7 @@ class VentaModel{
         try {
             $sql = "UPDATE ventas SET 
                         fechahora = ?, montototal = ?, mediopago = ?, descripcion = ?,
-                        id_automovil = ?, id_usuario = ?
+                        id_automovil = ?, idUsuario = ?
                     WHERE id_ventas = ?";
             $params = [
                 $data->getfechahora(),
@@ -95,7 +95,7 @@ class VentaModel{
                 $data->getmediopago(),
                 $data->getdescripcion(),
                 $data->getid_automovil(),
-                $data->getid_usuario(),
+                $data->getidUsuario(),
                 $data->getid_ventas()
             ];
             $this->pdo->prepare($sql)->execute($params);
@@ -108,7 +108,7 @@ class VentaModel{
     public function Registrar(Venta $data): void {
         try {
             $sql = "
-                INSERT INTO ventas (fechahora, montototal, mediopago, descripcion, id_automovil, id_usuario, id_vendedor) 
+                INSERT INTO ventas (fechahora, montototal, mediopago, descripcion, id_automovil, idUsuario, id_vendedor) 
                 VALUES ( ?, ?, ?, ?, ?, ?, ?)";
             $this->pdo->prepare($sql)->execute([
                 $data->getfechahora(),
@@ -116,7 +116,7 @@ class VentaModel{
                 $data->getmediopago(),
                 $data->getdescripcion(),
                 $data->getid_automovil(),
-                $data->getid_usuario(),
+                $data->getidUsuario(),
                 $data->getid_vendedor(),
 
             ]);
@@ -145,7 +145,7 @@ class VentaModel{
                 $venta->setmediopago($r->mediopago);
                 $venta->setdescripcion($r->descripcion);
                 $venta->setid_automovil($r->id_automovil);
-                $venta->setid_usuario($r->id_usuario);
+                $venta->setidUsuario($r->idUsuario);
 
                 $result[] = $venta;
             }
