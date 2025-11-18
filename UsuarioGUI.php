@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
 <head>
     <meta charset="UTF-8">
     <title>Gestión de Usuarios</title>
-    <link rel="stylesheet" href="Css/UsuarioGUI.css">
+    <link rel="stylesheet" href="css/UsuariosGUI.css">
 </head>
 <body>
     <h1>Administración de Usuarios</h1>
@@ -138,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
                 <td><?= htmlspecialchars($r->getDireccion()); ?></td>
                 <td><?= htmlspecialchars($r->getCorreo()); ?></td>
                 <td><?= htmlspecialchars($r->getTipo()); ?></td>
-                <td>
+                <td class="acciones">
                     <form method="post" style="display:inline;">
                         <input type="hidden" name="operacion" value="editar">
                         <input type="hidden" name="idUsuario" value="<?= $r->getidUsuario(); ?>">

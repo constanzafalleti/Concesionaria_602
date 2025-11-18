@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
 <head>
     <meta charset="UTF-8">
     <title>Gestión de Cargos</title>
-    <link rel="stylesheet" href="Css/Crud.css">
+    <link rel="stylesheet" href="css/Crud.css">
 </head>
 <body>
 

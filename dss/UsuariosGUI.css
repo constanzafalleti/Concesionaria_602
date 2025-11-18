@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+:root {
+    --azul-oscuro: #2f3d4c;
+    --azul-claro: #4b6a88;
+    --gris-fondo: #e8ecef;
+    --gris-claro: #f6f7f8;
+    --texto: #2b2b2b;
+    --boton: #4b6a88;
+    --boton-hover: #3d5a75;
+    --borde: #d0d4d8;
+}
+
+body {
+    background-color: var(--gris-fondo);
+    color: var(--texto);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+
+/* === TÍTULOS === */
+
+h1,
+h2 {
+    text-align: center;
+    color: var(--azul-oscuro);
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+    margin-top: 40px;
+}
+
+
+/* === FORMULARIO === */
+
+form {
+    background-color: var(--gris-claro);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 25px 35px;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: var(--azul-oscuro);
+    text-align: left;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 0.95rem;
+}
+
+button {
+    background-color: var(--boton);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: var(--boton-hover);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--gris-claro);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+    border-bottom: 1px solid var(--borde);
+    text-align: center;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+th {
+    background-color: var(--azul-oscuro);
+    color: #fff;
+    font-weight: 600;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* === CELDA DE ACCIONES === */
+
+td.acciones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* === BOTONES === */
+
+td button {
+    background-color: var(--boton);
+    color: #fff;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+td button:hover {
+    background-color: var(--boton-hover);
+}
+
+
+/* Quitar márgenes extra de los formularios dentro de las celdas */
+
+td form {
+    display: inline-block;
+    margin: 0;
+}
