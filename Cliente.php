@@ -12,7 +12,7 @@ if (!isset($_SESSION['idUsuario']) || $_SESSION['id_cargo'] != 2) {
 <head>
     <meta charset="UTF-8">
     <title>Panel del Cliente</title>
-    <link rel="stylesheet" href="Css/Cliente.css">
+    <link rel="stylesheet" href="Css/cliente.css">
 </head>
 <body>
     <h1>Bienvenido, <?= htmlspecialchars($_SESSION['Nombre']); ?> (Cliente)</h1>

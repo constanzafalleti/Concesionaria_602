@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* === GENERAL === */
+
+body {
+    font-family: Arial, sans-serif;
+    background: #222;
+    color: #fff;
+    padding: 20px;
+}
+
+h1,
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+/* === FORMULARIO === */
+
+form {
+    background: #fff;
+    color: #000;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+    border: 2px solid #263959;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #999;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 18px;
+    border: none;
+    background: #263959;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #1b2a41;
+}
+
+
+/* === TABLA === */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    color: #000;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #000;
+    text-align: center;
+}
+
+
+/* === ARREGLO DE BOTONES EN LA TABLA === */
+
+td:last-child {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    /* Espacio entre Editar y Eliminar */
+}
+
+td form {
+    display: inline-block;
+}
+
+td button {
+    padding: 5px 10px;
+    font-size: 14px;
+}

@@ -1,113 +1,78 @@
-<?php
-require_once 'Cargo.php';
-require_once 'Cargo.model.php';
-session_start();
-
-// Validación de sesión
-if (!isset($_SESSION['idUsuario'])) {
-    header("Location: login.php");
-    exit();
-}
-
-$cargoModel = new CargoModel();
-$cargo = new Cargo(); // Objeto para el formulario
-
-// Manejo del formulario
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
-    $operacion = $_POST['operacion'];
-    $id_cargo = filter_input(INPUT_POST, 'id_cargo', FILTER_VALIDATE_INT);
-    $tipo = trim($_POST['tipo'] ?? '');
-
-    switch ($operacion) {
-        case 'actualizar':
-           
-                $cargo->setid_cargo($id_cargo);
-                $cargo->settipo($tipo);
-                $cargoModel->Actualizar($cargo);
-                header('Location: CargoGUI.php');
-                exit();
-            break;
-
-        case 'registrar':
-                $cargo->settipo($tipo);
-                $cargoModel->Registrar($cargo);
-                header('Location: CargoGUI.php');
-                exit();
-            break;
-
-        case 'eliminar':
-            $idEliminar = filter_input(INPUT_POST, 'id_cargo', FILTER_VALIDATE_INT);
-            if ($idEliminar) {
-                $cargoModel->Eliminar($idEliminar);
-                header('Location: CargoGUI.php');
-                exit();
-            }
-            break;
-
-        case 'editar':
-            $idEditar = filter_input(INPUT_POST, 'id_cargo', FILTER_VALIDATE_INT);
-            if ($idEditar) {
-                $cargo = $cargoModel->Obtener($idEditar);
-            }
-            break;
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Gestión de Cargos</title>
-    <link rel="stylesheet" href="css/Crud.css">
+    <title>Gestión de Productos</title>
+    <link rel="stylesheet" href="Css/ProductoGUI.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Administración de Cargos</h1>
-        <div class="form-container">
-    
-            <!-- FORMULARIO ADMINISTRACION CARGOS -->
-            <form action="CargoGUI.php" method="post">
-                <input type="hidden" name="operacion" value="<?= ($cargo->getid_cargo() > 0) ? 'actualizar' : 'registrar'; ?>">
-                <input type="hidden" name="id_cargo" value="<?= htmlspecialchars($cargo->getid_cargo()); ?>">
+<div class="container">
+    <h1>Administración de Productos</h1>
 
-                <label for="name">Cargo:</label>
-                <input type="text" name="tipo" required value="<?= htmlspecialchars($cargo->gettipo() ?? ''); ?>"><br>
+    <!-- FORMULARIO ADMINISTRACION PRODUCTOS -->
+    <form action="ProductoGUI.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="operacion" value="<?= $producto->getid_automovil() > 0 ? 'actualizar' : 'registrar'; ?>">
+        <input type="hidden" name="id_automovil" value="<?= $producto->getid_automovil(); ?>">
 
-                <button type="submit">
-                    <?= ($cargo->getid_cargo() > 0) ? 'Actualizar' : 'Registrar'; ?>
-                </button>
-            </form>
-        </div>
+        <label>Nombre del Auto:</label>
+        <input type="text" name="nombre" required value="<?= htmlspecialchars($producto->getnombre() ?? ''); ?>">
 
-        <div class="list-container">
-            <!-- Tabla de Cargos -->
-            <h2>Listado de Cargos</h2>
-            <table border="1">
-                <tr>
-                    <th>Cargo</th>
-                    <th>Acciones</th>
-                </tr>
-                <?php foreach ($cargoModel->ListarTodos() as $r): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($r->gettipo()); ?></td>
-                        <td>
-                            <form method="post" style="display:inline;">
-                                <input type="hidden" name="operacion" value="editar">
-                                <input type="hidden" name="id_cargo" value="<?= $r->getid_cargo(); ?>">
-                                <button type="submit">Editar</button>
-                            </form>
-                            <form method="post" style="display:inline;" onsubmit="return confirm('¿Desea eliminar este cargo?');">
-                                <input type="hidden" name="operacion" value="eliminar">
-                                <input type="hidden" name="id_cargo" value="<?= $r->getid_cargo(); ?>">
-                                <button type="submit">Eliminar</button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
-        </div>
-    </div>
+        <label>Marca:</label>
+        <input type="text" name="marca" required value="<?= htmlspecialchars($producto->getmarca() ?? ''); ?>">
+
+        <label>Precio:</label>
+        <input type="text" name="precio" required value="<?= htmlspecialchars($producto->getprecio() ?? ''); ?>">
+
+        <label>Descripción:</label>
+        <input type="text" name="descripcion" required value="<?= htmlspecialchars($producto->getdescripcion() ?? ''); ?>">
+
+        <label>Stock:</label>
+        <input type="text" name="stock" required value="<?= htmlspecialchars($producto->getstock() ?? ''); ?>">
+
+        <button type="submit">
+            <?= $producto->getid_automovil() > 0 ? 'Actualizar' : 'Registrar'; ?>
+        </button>
+    </form>
+
+    <!-- TABLA DE PRODUCTOS -->
+    <h2>Listado de Productos</h2>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Marca</th>
+            <th>Precio</th>
+            <th>Descripción</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+        </tr>
+
+        <?php foreach ($productoModel->Listar() as $r): ?>
+            <tr>
+                <td><?= htmlspecialchars($r->getnombre()); ?></td>
+                <td><?= htmlspecialchars($r->getmarca()); ?></td>
+                <td><?= htmlspecialchars($r->getprecio()); ?></td>
+                <td><?= htmlspecialchars($r->getdescripcion()); ?></td>
+                <td><?= htmlspecialchars($r->getstock()); ?></td>
+
+                <td>
+                    <form method="post">
+                        <input type="hidden" name="operacion" value="editar">
+                        <input type="hidden" name="id_automovil" value="<?= $r->getid_automovil(); ?>">
+                        <button type="submit">Editar</button>
+                    </form>
+
+                    <form method="post" onsubmit="return confirm('¿Desea eliminar este producto?');">
+                        <input type="hidden" name="operacion" value="eliminar">
+                        <input type="hidden" name="id_automovil" value="<?= $r->getid_automovil(); ?>">
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+
+    </table>
+</div>
+
 </body>
 </html>

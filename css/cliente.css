@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+
+/* === VARIABLES DE COLOR === */
+
+:root {
+    --azul-oscuro: #2f3d4c;
+    --azul-claro: #4b6a88;
+    --gris-fondo: #e8ecef;
+    --gris-claro: #f6f7f8;
+    --texto: #2b2b2b;
+    --boton: #4b6a88;
+    --boton-hover: #3d5a75;
+    --borde: #d0d4d8;
+}
+
+
+/* === BODY === */
+
+body {
+    background-color: var(--gris-fondo);
+    color: var(--texto);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+
+/* === TÍTULO === */
+
+h1 {
+    text-align: center;
+    color: var(--azul-oscuro);
+    margin-bottom: 35px;
+    font-size: 2rem;
+}
+
+
+/* === MENÚ DE OPCIONES === */
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+}
+
+ul li a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    background-color: var(--boton);
+    color: #fff;
+    border: 1px solid transparent;
+    transition: background-color 0.2s, border 0.2s;
+}
+
+ul li a:hover {
+    background-color: var(--boton-hover);
+    border: 1px solid var(--azul-oscuro);
+}
+
+
+/* Opcional: más separación del fondo */
+
+ul li {
+    width: 100%;
+}

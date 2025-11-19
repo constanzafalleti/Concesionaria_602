@@ -22,9 +22,6 @@ body {
     text-align: center;
 }
 
-
-/* === CONTENEDOR PRINCIPAL === */
-
 .container {
     background-color: var(--gris);
     padding: 40px 50px;
@@ -34,9 +31,6 @@ body {
     width: 90%;
     max-width: 600px;
 }
-
-
-/* === TÍTULO === */
 
 h1 {
     color: var(--rojo);
@@ -49,9 +43,6 @@ h1 {
     text-transform: uppercase;
 }
 
-
-/* === BIENVENIDA === */
-
 .welcome {
     font-size: 1.2rem;
     margin-bottom: 25px;
@@ -61,9 +52,6 @@ h1 {
     color: var(--blanco);
     font-weight: bold;
 }
-
-
-/* === MENÚ DE OPCIONES === */
 
 ul {
     list-style: none;
@@ -88,9 +76,6 @@ ul li a:hover {
     background-color: var(--negro);
     border: 1px solid var(--blanco);
 }
-
-
-/* === MODO MÓVIL === */
 
 @media (max-width: 600px) {
     .container {

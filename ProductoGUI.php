@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['operacion'])) {
 <head>
     <meta charset="UTF-8">
     <title>Gestión de Productos</title>
-    <link rel="stylesheet" href="Css/ProductoGUI.css">
+    <link rel="stylesheet" href="Css/productoGUI.css">
 </head>
 <body>
     <h1>Administración de Productos</h1>

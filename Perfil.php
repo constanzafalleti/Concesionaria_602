@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Mi Perfil</title>
-    <link rel="stylesheet" href="Css/Perfil.css">
+    <link rel="stylesheet" href="Css/perfil.css">
 </head>
 <body>
     <h1>Mi Perfil - Cliente</h1>
